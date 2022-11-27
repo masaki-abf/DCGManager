@@ -1,22 +1,27 @@
 package app.yoshino.masaki.dcgmanager
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-private const val NUM_TABS = 2
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
-FragmentStateAdapter(fragmentManager,lifecycle){
+class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
+FragmentStateAdapter(fragmentActivity){
+    val gameList: MutableList<String> = arrayListOf("hunter","MRC")
+    val fragmentList: MutableList<Fragment> = arrayListOf(FirstFragment(),SecondFragment())
     override fun getItemCount(): Int {
-        return NUM_TABS
+        return fragmentList.size
     }
     override fun createFragment(position: Int): Fragment {
         when(position){
-            0 -> return FirstFragment()
-            1 -> return SecondFragment()
+            position -> return fragmentList[position]
         }
         return SecondFragment()
+    }
+    fun addTab(fragment: Fragment,title:String){
+        gameList.add(title)
+        fragmentList.add(fragment)
     }
 }

@@ -9,6 +9,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
+    lateinit var vpa: ViewPagerAdapter
     private val tabTitleArray = arrayOf(
         "Tab1",
         "Tab2"
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val AddIntent = Intent(this,AddMatchesActivity::class.java)
         val toEditIntent = Intent(this,AddMatchesActivity::class.java)
-
+        //val vpa = ViewPagerAdapter(this, lifecycle)
         val db = Room.databaseBuilder(
             applicationContext,
             AppDatabase::class.java, "database-name"
@@ -42,10 +43,11 @@ class MainActivity : AppCompatActivity() {
         val viewPager = binding.viewPager
         val tabLayout = binding.tabLayout
 
-        viewPager.adapter = ViewPagerAdapter(supportFragmentManager,lifecycle)
+        viewPager.adapter = ViewPagerAdapter(this)
+        vpa = ViewPagerAdapter(this)
 
         TabLayoutMediator(tabLayout,viewPager){tab,position ->
-            tab.text = tabTitleArray[position]
+            tab.text = vpa.gameList[position]
         }.attach()
 
         binding.buttonAdd.setOnClickListener{
