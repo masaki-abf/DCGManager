@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8E6C9"
+    android:backgroundTint="#DCEDC8"
+    tools:context=".AddMatchesActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="#DCEDC8"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <EditText
+            android:id="@+id/game_text"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="top"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-black"
+            android:hint="Game"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/enemy_deck_text"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-black"
+            android:hint="Enemy deck"
+            android:inputType="textPersonName" />
+
+        <Switch
+            android:id="@+id/first_switch"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-black"
+            android:text="First" />
+
+        <Switch
+            android:id="@+id/win_switch"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Win" />
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFDE7"
+            android:fontFamily="sans-serif-black"
+            android:text="Add"
+            android:textColor="#000000"
+            app:cornerRadius="60dp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,7 +2,9 @@ package app.yoshino.masaki.dcgmanager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import app.yoshino.masaki.dcgmanager.databinding.ItemRecyclerListBinding
 
 class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:List<String>):
     RecyclerView.Adapter<ViewHolderList>(){
@@ -16,6 +18,25 @@ class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:Li
         holder.firstList.text = first[position]
         holder.winList.text = win[position]
     }
-
     override fun getItemCount(): Int = deck.size
+
+    class MemoViewHolder(
+        private val binding: ItemRecyclerListBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(matches: Matches) {
+            binding.textDeck.text = matches.deck
+        }
+    }
+
+    private val diffUtilItemCallback = object : DiffUtil.ItemCallback<Matches> (){
+        override fun areContentsTheSame(oldItem: Matches, newItem: Matches): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areItemsTheSame(oldItem: Matches, newItem: Matches): Boolean {
+            return oldItem.id == newItem.id
+        }
+    }
+    class OnClickListener(val clickListener: (matches: Matches) -> Unit)
+    fun onClick(matches: Matches) = clickListener(matches)
 }
