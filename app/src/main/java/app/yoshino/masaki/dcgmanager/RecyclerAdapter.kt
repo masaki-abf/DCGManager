@@ -20,11 +20,23 @@ class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:Li
     }
     override fun getItemCount(): Int = deck.size
 
+
+
     class MemoViewHolder(
         private val binding: ItemRecyclerListBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(matches: Matches) {
             binding.textDeck.text = matches.deck
+            if (matches.first){
+                binding.textFirst.text = "First"
+            }else{
+                binding.textFirst.text = "Second"
+            }
+            if(matches.win){
+                binding.textWin.text = "Win"
+            }else{
+                binding.textWin.text = "lose"
+            }
         }
     }
 
@@ -37,6 +49,6 @@ class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:Li
             return oldItem.id == newItem.id
         }
     }
-    class OnClickListener(val clickListener: (matches: Matches) -> Unit)
-    fun onClick(matches: Matches) = clickListener(matches)
+//    class OnClickListener(val clickListener: (matches: Matches) -> Unit)
+//    fun onClick(matches: Matches) = clickListener(matches)
 }

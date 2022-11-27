@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         val matchesDao = db.matchesDao()
-        val matches: List<Matches> = matchesDao.getAll()
-        val recyclerAdapter =RecyclerAdapter(
-            OnClickListener{memo ->
-                toEditIntent.putExtra("ID".matches())
-                startActivity(toEditIntent)
-            }
-        )
+//        val matches: List<Matches> = matchesDao.getAll()
+//        val recyclerAdapter =RecyclerAdapter(
+//            OnClickListener{memo ->
+//                toEditIntent.putExtra("ID".matches())
+//                startActivity(toEditIntent)
+//            }
+//        )
 
         try{
             this.supportActionBar!!.hide()
