@@ -10,7 +10,20 @@ import androidx.recyclerview.widget.RecyclerView
 import app.yoshino.masaki.dcgmanager.databinding.FirstFragmentBinding
 import app.yoshino.masaki.dcgmanager.databinding.SecondFragmentBinding
 
-class SecondFragment : Fragment(){private lateinit var binding: FirstFragmentBinding
+class SecondFragment : Fragment(){
+
+    companion object {
+        fun newInstance(tabName: String): SecondFragment {
+            val fragment = SecondFragment()
+            val args = Bundle()
+            args.putString("name_tab", tabName)
+            fragment.setArguments(args)
+            return fragment
+        }
+    }
+
+
+    private lateinit var binding: FirstFragmentBinding
     private lateinit var recyclerView: RecyclerView
 
     lateinit var db: AppDatabase
@@ -25,22 +38,34 @@ class SecondFragment : Fragment(){private lateinit var binding: FirstFragmentBin
     }
     var deckList = listOf("")
 
-    var firstList = listOf("")
+    var firstList = listOf(true)
 
-    var winList = listOf("")
+    var winList = listOf(true)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = activity?.let { AppDatabase.getInstance(it.applicationContext) }!!
 
-        val matchList = db.matchesDao().getAll()
+        val args = arguments
+        val index = args?.getString("name_tab")
 
-        deckList = matchList.map { it.deck }.toList()
-        firstList = matchList.map { it.first.toString() }.toList()
-        winList = matchList.map { it.win.toString() }.toList()
+        val matchList = index?.let { db.matchesDao().getGmae(it) }
+
+        if (matchList != null) {
+            deckList = matchList.map { it.deck }.toList()
+        }
+        if (matchList != null) {
+            firstList = matchList.map { it.first}.toList()
+        }
+        if (matchList != null) {
+            winList = matchList.map { it.win }.toList()
+        }
+
+        val firstListUpdated = firstList.map{if (it) "First" else "Second"}
+        val winListUpdated = winList.map{if (it) "Win" else "Lose"}
 
         recyclerView = binding.recyclerView
-        recyclerView.adapter = RecyclerAdapter(deckList,firstList,winList)
+        recyclerView.adapter = RecyclerAdapter(deckList,firstListUpdated,winListUpdated)
         recyclerView.layoutManager = LinearLayoutManager(activity)
     }
 }

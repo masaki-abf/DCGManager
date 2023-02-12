@@ -70,7 +70,7 @@
             app:srcCompat="@drawable/ic_add" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button_setting"
+            android:id="@+id/button_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

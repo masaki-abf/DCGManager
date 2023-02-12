@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val AddIntent = Intent(this,AddMatchesActivity::class.java)
         val toEditIntent = Intent(this,AddMatchesActivity::class.java)
+        val Addtabintent = Intent(this,AddTabActivity::class.java)
+        val InfoIntent = Intent(this,InfoActivity::class.java)
         //val vpa = ViewPagerAdapter(this, lifecycle)
         val db = Room.databaseBuilder(
             applicationContext,
@@ -50,8 +52,22 @@ class MainActivity : AppCompatActivity() {
             tab.text = vpa.gameList[position]
         }.attach()
 
+        var tabPosition = tabLayout.selectedTabPosition
+
         binding.buttonAdd.setOnClickListener{
+            tabPosition = tabLayout.selectedTabPosition
+            AddIntent.putExtra("pI", tabPosition)
             startActivity(AddIntent)
+        }
+        binding.buttonTab.setOnClickListener {
+            tabPosition = tabLayout.selectedTabPosition
+            Addtabintent.putExtra("pI", tabPosition)
+            startActivity(Addtabintent)
+        }
+        binding.buttonInfo.setOnClickListener {
+            tabPosition = tabLayout.selectedTabPosition
+            InfoIntent.putExtra("pI", tabPosition)
+            startActivity(InfoIntent)
         }
     }
 }

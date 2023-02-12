@@ -20,26 +20,6 @@ class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:Li
     }
     override fun getItemCount(): Int = deck.size
 
-
-
-    class MemoViewHolder(
-        private val binding: ItemRecyclerListBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(matches: Matches) {
-            binding.textDeck.text = matches.deck
-            if (matches.first){
-                binding.textFirst.text = "First"
-            }else{
-                binding.textFirst.text = "Second"
-            }
-            if(matches.win){
-                binding.textWin.text = "Win"
-            }else{
-                binding.textWin.text = "lose"
-            }
-        }
-    }
-
     private val diffUtilItemCallback = object : DiffUtil.ItemCallback<Matches> (){
         override fun areContentsTheSame(oldItem: Matches, newItem: Matches): Boolean {
             return oldItem == newItem

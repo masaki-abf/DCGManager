@@ -13,6 +13,12 @@
         android:theme="@style/Theme.DCGManager"
         tools:targetApi="31">
         <activity
+            android:name=".InfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddTabActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditActivity"
             android:exported="false">
             <meta-data

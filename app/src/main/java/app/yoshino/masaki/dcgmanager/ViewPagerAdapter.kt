@@ -10,10 +10,13 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
 FragmentStateAdapter(fragmentActivity){
     val gameList: MutableList<String> = arrayListOf("hunter","MRC")
-    val fragmentList: MutableList<Fragment> = arrayListOf(FirstFragment(),SecondFragment())
+    val fragmentList: MutableList<Fragment> = arrayListOf(SecondFragment.newInstance("hunter"),SecondFragment.newInstance("MRC"))
     override fun getItemCount(): Int {
         return fragmentList.size
     }
+
+
+
     override fun createFragment(position: Int): Fragment {
         when(position){
             position -> return fragmentList[position]
