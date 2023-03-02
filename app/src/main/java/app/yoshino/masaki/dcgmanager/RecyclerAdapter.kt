@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import app.yoshino.masaki.dcgmanager.databinding.ItemRecyclerListBinding
 
+
 class RecyclerAdapter (val deck: List<String>,val first: List<String>,val win:List<String>):
     RecyclerView.Adapter<ViewHolderList>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderList {

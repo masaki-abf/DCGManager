@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.yoshino.masaki.dcgmanager.databinding.FirstFragmentBinding
 import app.yoshino.masaki.dcgmanager.databinding.SecondFragmentBinding
 
+
 class SecondFragment : Fragment(){
 
     companion object {

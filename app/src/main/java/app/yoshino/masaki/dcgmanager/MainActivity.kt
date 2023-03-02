@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.room.Room
 import app.yoshino.masaki.dcgmanager.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import app.yoshino.masaki.dcgmanager.MyApplication.Companion.gameList
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         vpa = ViewPagerAdapter(this)
 
         TabLayoutMediator(tabLayout,viewPager){tab,position ->
-            tab.text = vpa.gameList[position]
+            tab.text = gameList[position]
         }.attach()
 
         var tabPosition = tabLayout.selectedTabPosition

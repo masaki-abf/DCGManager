@@ -4,31 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C8E6C9"
+    android:backgroundTintMode="add"
     tools:context=".MainActivity">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/button_tab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_add" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:layout_marginEnd="57dp"
         android:backgroundTint="#C8E6C9"
-        app:layout_constraintBottom_toBottomOf="@id/button_tab"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@id/button_tab"
-        app:layout_constraintTop_toTopOf="parent"
         app:tabMode="auto">
 
 
@@ -47,6 +33,16 @@
         <!--            android:layout_height="wrap_content"-->
         <!--            android:text="Wednesday" />-->
     </com.google.android.material.tabs.TabLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/button_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#C8E6C9"
+        android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_add" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
@@ -98,4 +94,5 @@
             app:srcCompat="@android:drawable/ic_menu_delete"
             tools:srcCompat="@android:drawable/ic_menu_delete" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
